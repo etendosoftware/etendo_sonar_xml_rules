@@ -11,25 +11,25 @@ Collect all XML rules used in Etendo
 5. Look for the `Track breaches of an XPath rule` template.
 6. Click on it to select it, then use the interface controls to create a new instance.
 7. Fill in the form that pops up.
-    * Name: the name for the new rule
-    * Key: a key that will identify the new rule. Can be the name, replacing spaces with underscores. For example \
+    * **Name**: the name for the new rule
+    * **Key**: a key that will identify the new rule. Can be the name, replacing spaces with underscores. For example \
     _Name_: New Rule For XML \
     _Key_: New_Rule_For_XML
-    * Type: There are three types of rules:
-        * Bug: A coding mistake that can lead to an error or unexpected behavior at runtime.
-        * Vulnerability: A point in the code that's open to attack.
-        * Code Smell: A maintainability issue that makes the code confusing and difficult to maintain. \
+    * **Type**: There are three types of rules:
+        * _Bug_: A coding mistake that can lead to an error or unexpected behavior at runtime.
+        * _Vulnerability_: A point in the code that's open to attack.
+        * _Code Smell_: A maintainability issue that makes the code confusing and difficult to maintain. \
         \
         For these types of rules, we tipically use Bug or Code Smell
-    * Description: explain in detail the issue being checked by this rule, and why is it an issue in the first place. Use examples to show compliant and non-compliant code.
-    * File Pattern: The files to be validated using Ant-style matching patterns. For example:
+    * **Description**: explain in detail the issue being checked by this rule, and why is it an issue in the first place. Use examples to show compliant and non-compliant code.
+    * **File Pattern**: The files to be validated using Ant-style matching patterns. For example:
         * `**/src-db/tables/*.xml` - any XML file in the src-db/tables folder
         * `**/src-db/**/*.xml` - any XML file in the src-db folder
         * `**/AD_ELEMENT.xml` - XML files named AD_ELEMENT in any place
-    * Expression: The XPath query that will match with the non-compliant code. To develop these types of expressions, the following tool will be useful: [Free Online XPath Tester / Evaluator](https://www.freeformatter.com/xpath-tester.html) \
+    * **Expression**: The XPath query that will match with the non-compliant code. To develop these types of expressions, the following tool will be useful: [Free Online XPath Tester / Evaluator](https://www.freeformatter.com/xpath-tester.html) \
     \
     With this tool, you can load an xml file that triggers the issue, and try to write an XPath expression that matches with the code triggering it. You can check for examples of XPath expressions in the other rules created from this template. 
-    * Message: the text that will be shown on non-compliant code
+    * **Message**: the text that will be shown on non-compliant code
 
     > [!TIP]
     > Sonar provides some [useful guidelines on writing new rules](https://docs.sonarsource.com/sonarqube/latest/extension-guide/adding-coding-rules/#guidelines-when-writing-rules-for-issues) that should be taken into account for these XML Rules
