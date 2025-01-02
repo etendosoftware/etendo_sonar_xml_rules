@@ -40,7 +40,7 @@ Collect all XML rules used in Etendo
 1. Log in to SonarQube as quality profile administrator
 2. Go to the `Quality Profiles` page
 3. Focus onto the desired XML profile to import
-4. Click on the Cog Icon -> Back up. An xml file will be downloaded, containing all the profile's XML rules
+4. Click on the ⚙️ -> Back up. An xml file will be downloaded, containing all the profile's XML rules
 5. Rename the downloaded file to `sonar_XML_rules_backup.xml`
 6. Replace the backup present in this repository with the new backup
 7. Upload the changes to this repository
