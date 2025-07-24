@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?><profile><name>Futit</name><language>xml</language><rules><rule><repositoryKey>xml</repositoryKey><key>All_tables_must_have_audit_columns</key><type>CODE_SMELL</type><priority>MAJOR</priority><name>All tables must have audit columns</name><templateKey>XPathCheck</templateKey><description>There can be no table that doesn't have any of the following audit columns:
+<?xml version="1.0" encoding="UTF-8"?><profile><name>Futit</name><language>xml</language><rules><rule><repositoryKey>xml</repositoryKey><key>All_tables_must_have_audit_columns</key><type>CODE_SMELL</type><priority>MAJOR</priority><name>All tables must have audit columns</name><templateKey>XPathCheck</templateKey><description>There can be no table that doesn't have any of the following audit columns:
 * created
 * created by
 * updated
@@ -6,23 +6,23 @@
 
 == required audit columns
 ``
-&lt;column name="CREATED" primaryKey="false" required="true" type="TIMESTAMP" size="7" autoIncrement="false">
-        &lt;default>&lt;![CDATA[SYSDATE]]&gt;&lt;/default>
-        &lt;onCreateDefault/>
-      &lt;/column>
-      &lt;column name="CREATEDBY" primaryKey="false" required="true" type="VARCHAR" size="32" autoIncrement="false">
-        &lt;default/>
-        &lt;onCreateDefault/>
-      &lt;/column>
-      &lt;column name="UPDATED" primaryKey="false" required="true" type="TIMESTAMP" size="7" autoIncrement="false">
-        &lt;default>&lt;![CDATA[SYSDATE]]&gt;&lt;/default>
-        &lt;onCreateDefault/>
-      &lt;/column>
-      &lt;column name="UPDATEDBY" primaryKey="false" required="true" type="VARCHAR" size="32" autoIncrement="false">
-        &lt;default/>
-        &lt;onCreateDefault/>
-      &lt;/column>
-``</description><parameters><parameter><key>filePattern</key><value>src-db/database/model/tables/*.xml</value></parameter><parameter><key>expression</key><value>//table[
+&lt;column name="CREATED" primaryKey="false" required="true" type="TIMESTAMP" size="7" autoIncrement="false"&gt;
+        &lt;default&gt;&lt;![CDATA[SYSDATE]]&gt;&lt;/default&gt;
+        &lt;onCreateDefault/&gt;
+      &lt;/column&gt;
+      &lt;column name="CREATEDBY" primaryKey="false" required="true" type="VARCHAR" size="32" autoIncrement="false"&gt;
+        &lt;default/&gt;
+        &lt;onCreateDefault/&gt;
+      &lt;/column&gt;
+      &lt;column name="UPDATED" primaryKey="false" required="true" type="TIMESTAMP" size="7" autoIncrement="false"&gt;
+        &lt;default&gt;&lt;![CDATA[SYSDATE]]&gt;&lt;/default&gt;
+        &lt;onCreateDefault/&gt;
+      &lt;/column&gt;
+      &lt;column name="UPDATEDBY" primaryKey="false" required="true" type="VARCHAR" size="32" autoIncrement="false"&gt;
+        &lt;default/&gt;
+        &lt;onCreateDefault/&gt;
+      &lt;/column&gt;
+``</description><cleanCodeAttribute>CONVENTIONAL</cleanCodeAttribute><parameters><parameter><key>filePattern</key><value>src-db/database/model/tables/*.xml</value></parameter><parameter><key>expression</key><value>//table[
   not(
     column[@name="UPDATEDBY"] and
     column[@name="CREATEDBY"] and
@@ -37,111 +37,111 @@
 
 == required audit columns
 ``
-&lt;column name="CREATED" primaryKey="false" required="true" type="TIMESTAMP" size="7" autoIncrement="false">
-        &lt;default>&lt;![CDATA[SYSDATE]]&gt;&lt;/default>
-        &lt;onCreateDefault/>
-      &lt;/column>
-      &lt;column name="CREATEDBY" primaryKey="false" required="true" type="VARCHAR" size="32" autoIncrement="false">
-        &lt;default/>
-        &lt;onCreateDefault/>
-      &lt;/column>
-      &lt;column name="UPDATED" primaryKey="false" required="true" type="TIMESTAMP" size="7" autoIncrement="false">
-        &lt;default>&lt;![CDATA[SYSDATE]]&gt;&lt;/default>
-        &lt;onCreateDefault/>
-      &lt;/column>
-      &lt;column name="UPDATEDBY" primaryKey="false" required="true" type="VARCHAR" size="32" autoIncrement="false">
-        &lt;default/>
-        &lt;onCreateDefault/>
-      &lt;/column>
-``</description><parameters><parameter><key>filePattern</key><value>**/tables/*.xml</value></parameter><parameter><key>expression</key><value>//table[
+&lt;column name="CREATED" primaryKey="false" required="true" type="TIMESTAMP" size="7" autoIncrement="false"&gt;
+        &lt;default&gt;&lt;![CDATA[SYSDATE]]&gt;&lt;/default&gt;
+        &lt;onCreateDefault/&gt;
+      &lt;/column&gt;
+      &lt;column name="CREATEDBY" primaryKey="false" required="true" type="VARCHAR" size="32" autoIncrement="false"&gt;
+        &lt;default/&gt;
+        &lt;onCreateDefault/&gt;
+      &lt;/column&gt;
+      &lt;column name="UPDATED" primaryKey="false" required="true" type="TIMESTAMP" size="7" autoIncrement="false"&gt;
+        &lt;default&gt;&lt;![CDATA[SYSDATE]]&gt;&lt;/default&gt;
+        &lt;onCreateDefault/&gt;
+      &lt;/column&gt;
+      &lt;column name="UPDATEDBY" primaryKey="false" required="true" type="VARCHAR" size="32" autoIncrement="false"&gt;
+        &lt;default/&gt;
+        &lt;onCreateDefault/&gt;
+      &lt;/column&gt;
+``</description><cleanCodeAttribute>CONVENTIONAL</cleanCodeAttribute><parameters><parameter><key>filePattern</key><value>**/tables/*.xml</value></parameter><parameter><key>expression</key><value>//table[
   not(
     column[@name="UPDATEDBY"] and
     column[@name="CREATEDBY"] and
     column[@name="UPDATED"] and
     column[@name="CREATED"]
   )
-]</value></parameter><parameter><key>message</key><value>Add missing audit columns for this table</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>An_element_print_name_must_be_the_same_as_its_name</key><type>CODE_SMELL</type><priority>MINOR</priority><name>An element print name must be the same as its name</name><templateKey>XPathCheck</templateKey><description>This rule ensures that the PRINTNAME value matches the NAME value in the AD_ELEMENT table, maintaining consistency across database entries.</description><parameters><parameter><key>expression</key><value>//AD_ELEMENT[NAME != PRINTNAME]/PRINTNAME</value></parameter><parameter><key>filePattern</key><value>**/src-db/database/sourcedata/AD_ELEMENT.xml</value></parameter><parameter><key>message</key><value>Make this element’s printname the same as its name</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Check_if_new_required_column_needs_default_value</key><type>BUG</type><priority>INFO</priority><name>Required columns might need default value</name><templateKey>XPathCheck</templateKey><description>When creating a column and setting it as required, consider if a default value is needed for it.
+]</value></parameter><parameter><key>message</key><value>Add missing audit columns for this table</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>An_element_print_name_must_be_the_same_as_its_name</key><type>CODE_SMELL</type><priority>MINOR</priority><name>An element print name must be the same as its name</name><templateKey>XPathCheck</templateKey><description>This rule ensures that the PRINTNAME value matches the NAME value in the AD_ELEMENT table, maintaining consistency across database entries.</description><cleanCodeAttribute>CONVENTIONAL</cleanCodeAttribute><parameters><parameter><key>expression</key><value>//AD_ELEMENT[NAME != PRINTNAME]/PRINTNAME</value></parameter><parameter><key>filePattern</key><value>**/src-db/database/sourcedata/AD_ELEMENT.xml</value></parameter><parameter><key>message</key><value>Make this element’s printname the same as its name</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Check_if_new_required_column_needs_default_value</key><type>BUG</type><priority>INFO</priority><name>Required columns might need default value</name><templateKey>XPathCheck</templateKey><description>When creating a column and setting it as required, consider if a default value is needed for it.
 
 Ask yourself the following questions:
 * Can the column be auto completed on every new record?
-* Is there a value for this column that can be used as default?</description><parameters><parameter><key>expression</key><value>//column[@required="true" and not(./*/node())]</value></parameter><parameter><key>filePattern</key><value>**/tables/*.xml</value></parameter><parameter><key>message</key><value>Consider if a default value is needed for this column</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Columns_must_have_elements</key><type>CODE_SMELL</type><priority>MAJOR</priority><name>Columns must have elements</name><templateKey>XPathCheck</templateKey><description>In the columns all must have an AD_ELEMENT_ID and also that AD_ELEMENT_ID must be from Core, the module to which it belongs or from a module on which it depends.</description><parameters><parameter><key>filePattern</key><value>**/AD_COLUMN.xml</value></parameter><parameter><key>expression</key><value>//AD_COLUMN[not(AD_ELEMENT_ID)]</value></parameter><parameter><key>message</key><value>In the columns all must have an AD_ELEMENT_ID and also that AD_ELEMENT_ID must be from Core, the module to which it belongs or from a module on which it depends.</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Elements_must_have_Help___description</key><type>CODE_SMELL</type><priority>MAJOR</priority><name>Elements must have Help &amp; description</name><templateKey>XPathCheck</templateKey><description>The elements must have Help &amp; Description. Both texts cannot be equal.</description><parameters><parameter><key>filePattern</key><value>**/AD_ELEMENT.xml</value></parameter><parameter><key>expression</key><value>//AD_ELEMENT[not(HELP) or not(DESCRIPTION) or HELP = DESCRIPTION]</value></parameter><parameter><key>message</key><value>The elements must have Help &amp; Description. Both texts cannot be equal.</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Java_class_name_without_prefix</key><type>CODE_SMELL</type><priority>MINOR</priority><name>Java class name without prefix</name><templateKey>XPathCheck</templateKey><description>Java classes should not start with the module prefix.</description><parameters><parameter><key>expression</key><value>//AD_TABLE[
+* Is there a value for this column that can be used as default?</description><cleanCodeAttribute>CONVENTIONAL</cleanCodeAttribute><parameters><parameter><key>expression</key><value>//column[@required="true" and not(./*/node())]</value></parameter><parameter><key>filePattern</key><value>**/tables/*.xml</value></parameter><parameter><key>message</key><value>Consider if a default value is needed for this column</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Columns_must_have_elements</key><type>CODE_SMELL</type><priority>MAJOR</priority><name>Columns must have elements</name><templateKey>XPathCheck</templateKey><description>In the columns all must have an AD_ELEMENT_ID and also that AD_ELEMENT_ID must be from Core, the module to which it belongs or from a module on which it depends.</description><cleanCodeAttribute>CONVENTIONAL</cleanCodeAttribute><parameters><parameter><key>filePattern</key><value>**/AD_COLUMN.xml</value></parameter><parameter><key>expression</key><value>//AD_COLUMN[not(AD_ELEMENT_ID)]</value></parameter><parameter><key>message</key><value>In the columns all must have an AD_ELEMENT_ID and also that AD_ELEMENT_ID must be from Core, the module to which it belongs or from a module on which it depends.</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Elements_must_have_Help___description</key><type>CODE_SMELL</type><priority>MAJOR</priority><name>Elements must have Help &amp; description</name><templateKey>XPathCheck</templateKey><description>The elements must have Help &amp; Description. Both texts cannot be equal.</description><cleanCodeAttribute>CONVENTIONAL</cleanCodeAttribute><parameters><parameter><key>filePattern</key><value>**/AD_ELEMENT.xml</value></parameter><parameter><key>expression</key><value>//AD_ELEMENT[not(HELP) or not(DESCRIPTION) or HELP = DESCRIPTION]</value></parameter><parameter><key>message</key><value>The elements must have Help &amp; Description. Both texts cannot be equal.</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Java_class_name_without_prefix</key><type>CODE_SMELL</type><priority>MINOR</priority><name>Java class name without prefix</name><templateKey>XPathCheck</templateKey><description>Java classes should not start with the module prefix.</description><cleanCodeAttribute>CONVENTIONAL</cleanCodeAttribute><parameters><parameter><key>expression</key><value>//AD_TABLE[
   translate(substring-before(TABLENAME, '_'), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 
   translate(substring(CLASSNAME, 1, string-length(substring-before(TABLENAME, '_'))), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')
-]</value></parameter><parameter><key>filePattern</key><value>**/AD_TABLE.xml</value></parameter><parameter><key>message</key><value>Java classes should not start with the module prefix.</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Name_of_columns_must_not_have__</key><type>CODE_SMELL</type><priority>MAJOR</priority><name>Name of columns must not have _</name><templateKey>XPathCheck</templateKey><description>The name of the Column must not have _. Except the case of the external module column, being only allowed the _ of the "em_prefix_".</description><parameters><parameter><key>expression</key><value>//AD_COLUMN[
+]</value></parameter><parameter><key>filePattern</key><value>**/AD_TABLE.xml</value></parameter><parameter><key>message</key><value>Java classes should not start with the module prefix.</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Name_of_columns_must_not_have__</key><type>CODE_SMELL</type><priority>MAJOR</priority><name>Name of columns must not have _</name><templateKey>XPathCheck</templateKey><description>The name of the Column must not have _. Except the case of the external module column, being only allowed the _ of the "em_prefix_".</description><cleanCodeAttribute>CONVENTIONAL</cleanCodeAttribute><parameters><parameter><key>expression</key><value>//AD_COLUMN[
   (not(starts-with(translate(NAME, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'em')) and contains(NAME, '_'))
   or
-  (starts-with(translate(NAME, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'em') and (string-length(NAME) - string-length(translate(NAME, '_', ''))) > 2)
-]</value></parameter><parameter><key>filePattern</key><value>**/AD_COLUMN.xml</value></parameter><parameter><key>message</key><value>The name of the Column must not have _. Except the case of the external module column, being only allowed the _ of the "em_prefix_".</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Primary_keys_must_follow_conventions</key><type>BUG</type><priority>CRITICAL</priority><name>Primary keys should follow conventions</name><templateKey>XPathCheck</templateKey><description>All primary keys must follow the defined conventions. This is, 'VARCHAR' type and length of 32 characters</description><parameters><parameter><key>filePattern</key><value>**/tables/*.xml</value></parameter><parameter><key>expression</key><value>//column[@primaryKey="true" and not(@type="VARCHAR" and @size="32")]</value></parameter><parameter><key>message</key><value>Change this Primary Key definition to fit standards</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Required_columns_must_have_default_value_set</key><type>BUG</type><priority>MAJOR</priority><name>Mandatory columns must have a default value and onCreateDefault value</name><templateKey>XPathCheck</templateKey><description>If a column in an edited table is marked as required, it is mandatory that it has a default value specified in &lt;default> and a value in &lt;onCreateDefault>. This ensures that records already existing in the table can have the column set to a value, avoiding compilation or execution errors due to missing values in existing records.
+  (starts-with(translate(NAME, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'em') and (string-length(NAME) - string-length(translate(NAME, '_', ''))) &gt; 2)
+]</value></parameter><parameter><key>filePattern</key><value>**/AD_COLUMN.xml</value></parameter><parameter><key>message</key><value>The name of the Column must not have _. Except the case of the external module column, being only allowed the _ of the "em_prefix_".</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Primary_keys_must_follow_conventions</key><type>BUG</type><priority>CRITICAL</priority><name>Primary keys should follow conventions</name><templateKey>XPathCheck</templateKey><description>All primary keys must follow the defined conventions. This is, 'VARCHAR' type and length of 32 characters</description><cleanCodeAttribute>CONVENTIONAL</cleanCodeAttribute><parameters><parameter><key>filePattern</key><value>**/tables/*.xml</value></parameter><parameter><key>expression</key><value>//column[@primaryKey="true" and not(@type="VARCHAR" and @size="32")]</value></parameter><parameter><key>message</key><value>Change this Primary Key definition to fit standards</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Required_columns_must_have_default_value_set</key><type>BUG</type><priority>MAJOR</priority><name>Mandatory columns must have a default value and onCreateDefault value</name><templateKey>XPathCheck</templateKey><description>If a column in an edited table is marked as required, it is mandatory that it has a default value specified in &lt;default&gt; and a value in &lt;onCreateDefault&gt;. This ensures that records already existing in the table can have the column set to a value, avoiding compilation or execution errors due to missing values in existing records.
 
 
 == non-compliant code examples: 
 ``
-&lt;?xml version="1.0"?>
-  &lt;database name="MODIFIED TABLE M_PRODUCT">
-    &lt;table name="M_PRODUCT" primaryKey="M_PRODUCT_PK">
-      &lt;column name="EXAMPLE" primaryKey="false" required="true" type="VARCHAR" size="50" autoIncrement="false">
-        &lt;default/>            // default is empty
-        &lt;onCreateDefault/>    // onCreateDefault is empty
-      &lt;/column>
-    &lt;/table>
-  &lt;/database>
+&lt;?xml version="1.0"?&gt;
+  &lt;database name="MODIFIED TABLE M_PRODUCT"&gt;
+    &lt;table name="M_PRODUCT" primaryKey="M_PRODUCT_PK"&gt;
+      &lt;column name="EXAMPLE" primaryKey="false" required="true" type="VARCHAR" size="50" autoIncrement="false"&gt;
+        &lt;default/&gt;            // default is empty
+        &lt;onCreateDefault/&gt;    // onCreateDefault is empty
+      &lt;/column&gt;
+    &lt;/table&gt;
+  &lt;/database&gt;
 ``
 
 ``
-&lt;?xml version="1.0"?>
-  &lt;database name="MODIFIED TABLE M_PRODUCT">
-    &lt;table name="M_PRODUCT" primaryKey="M_PRODUCT_PK">
-      &lt;column name="EXAMPLE" primaryKey="false" required="true" type="VARCHAR" size="50" autoIncrement="false">
-        &lt;default>&lt;![CDATA['This is an example']]&gt;&lt;/default>
-        &lt;onCreateDefault/>                                  // onCreateDefault is empty
-      &lt;/column>
-    &lt;/table>
-  &lt;/database>
+&lt;?xml version="1.0"?&gt;
+  &lt;database name="MODIFIED TABLE M_PRODUCT"&gt;
+    &lt;table name="M_PRODUCT" primaryKey="M_PRODUCT_PK"&gt;
+      &lt;column name="EXAMPLE" primaryKey="false" required="true" type="VARCHAR" size="50" autoIncrement="false"&gt;
+        &lt;default&gt;&lt;![CDATA['This is an example']]&gt;&lt;/default&gt;
+        &lt;onCreateDefault/&gt;                                  // onCreateDefault is empty
+      &lt;/column&gt;
+    &lt;/table&gt;
+  &lt;/database&gt;
 ``
 
 ``
-&lt;?xml version="1.0"?>
-  &lt;database name="MODIFIED TABLE M_PRODUCT">
-    &lt;table name="M_PRODUCT" primaryKey="M_PRODUCT_PK">
-      &lt;column name="EXAMPLE" primaryKey="false" required="true" type="VARCHAR" size="50" autoIncrement="false">
-        &lt;default/>                                                            // default is empty
-        &lt;onCreateDefault>&lt;![CDATA['This is an example']]&gt;&lt;/onCreateDefault>
-      &lt;/column>
-    &lt;/table>
-  &lt;/database>
+&lt;?xml version="1.0"?&gt;
+  &lt;database name="MODIFIED TABLE M_PRODUCT"&gt;
+    &lt;table name="M_PRODUCT" primaryKey="M_PRODUCT_PK"&gt;
+      &lt;column name="EXAMPLE" primaryKey="false" required="true" type="VARCHAR" size="50" autoIncrement="false"&gt;
+        &lt;default/&gt;                                                            // default is empty
+        &lt;onCreateDefault&gt;&lt;![CDATA['This is an example']]&gt;&lt;/onCreateDefault&gt;
+      &lt;/column&gt;
+    &lt;/table&gt;
+  &lt;/database&gt;
 ``
 
 == compliant solution:
 ``
-&lt;?xml version="1.0"?>
-  &lt;database name="MODIFIED TABLE M_PRODUCT">
-    &lt;table name="M_PRODUCT" primaryKey="M_PRODUCT_PK">
-      &lt;column name="EXAMPLE" primaryKey="false" required="true" type="VARCHAR" size="50" autoIncrement="false">
-        &lt;default>&lt;![CDATA['This is an example']]&gt;&lt;/default>
-        &lt;onCreateDefault>&lt;![CDATA['This is an example']]&gt;&lt;/onCreateDefault>
-      &lt;/column>
-    &lt;/table>
-  &lt;/database>
-``</description><parameters><parameter><key>filePattern</key><value>**/modifiedTables/*.xml</value></parameter><parameter><key>expression</key><value>//column[@required='true' and ((not(onCreateDefault/text()) or normalize-space(onCreateDefault) = '') or (not(default/text()) or normalize-space(default) = ''))]</value></parameter><parameter><key>message</key><value>Add a default value and/or onCreateDefault value to this required column</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S1134</key><type>CODE_SMELL</type><priority>MAJOR</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S1135</key><type>CODE_SMELL</type><priority>INFO</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S125</key><type>CODE_SMELL</type><priority>MAJOR</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S1778</key><type>BUG</type><priority>CRITICAL</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S2068</key><type>SECURITY_HOTSPOT</type><priority>BLOCKER</priority><parameters><parameter><key>credentialWords</key><value>password,passwd,pwd,passphrase</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S2647</key><type>VULNERABILITY</type><priority>CRITICAL</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S3281</key><type>VULNERABILITY</type><priority>BLOCKER</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S3330</key><type>SECURITY_HOTSPOT</type><priority>MINOR</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S3355</key><type>VULNERABILITY</type><priority>CRITICAL</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S3374</key><type>VULNERABILITY</type><priority>BLOCKER</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S3421</key><type>CODE_SMELL</type><priority>MINOR</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S3422</key><type>BUG</type><priority>CRITICAL</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S3438</key><type>BUG</type><priority>MAJOR</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S3439</key><type>BUG</type><priority>MAJOR</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S3822</key><type>BUG</type><priority>CRITICAL</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S4507</key><type>SECURITY_HOTSPOT</type><priority>MINOR</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S5122</key><type>SECURITY_HOTSPOT</type><priority>MINOR</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S5322</key><type>SECURITY_HOTSPOT</type><priority>CRITICAL</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S5332</key><type>SECURITY_HOTSPOT</type><priority>CRITICAL</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S5594</key><type>VULNERABILITY</type><priority>MAJOR</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S5604</key><type>SECURITY_HOTSPOT</type><priority>MAJOR</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S6358</key><type>SECURITY_HOTSPOT</type><priority>MAJOR</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S6359</key><type>VULNERABILITY</type><priority>MINOR</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>S6361</key><type>SECURITY_HOTSPOT</type><priority>MAJOR</priority><parameters/></rule><rule><repositoryKey>xml</repositoryKey><key>Tab_must_not_have_Header_as_name</key><type>CODE_SMELL</type><priority>MINOR</priority><name>Tab must not have Header as name</name><templateKey>XPathCheck</templateKey><description>The Header of a window should be called "WINDOW_NAME Header". This is to make the Tab more recognizable in the selectors it appears. 
-For example, if the window is called "Product Operations", the tab header should be called "Product Operations Header".</description><parameters><parameter><key>filePattern</key><value>**/AD_TAB.xml</value></parameter><parameter><key>expression</key><value>//*[normalize-space(translate(NAME, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')) = 'header']</value></parameter><parameter><key>message</key><value>Tabs name must not be "Header".</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Text_of_the_messages_must_be_end_with__</key><type>CODE_SMELL</type><priority>MAJOR</priority><name>Text of the messages must be end with . or ! or ?</name><templateKey>XPathCheck</templateKey><description>The messages must be ended by a .</description><parameters><parameter><key>expression</key><value>//AD_MESSAGE[string-length(MSGTEXT) > 15 and substring(MSGTEXT, string-length(MSGTEXT), 1) != "." and substring(MSGTEXT, string-length(MSGTEXT), 1) != "?" and substring(MSGTEXT, string-length(MSGTEXT), 1) != "!"]</value></parameter><parameter><key>filePattern</key><value>**/AD_MESSAGE.xml</value></parameter><parameter><key>message</key><value>The messages must be ended by a .</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>The_elements_must_not_have_underscores_in_the_name</key><type>CODE_SMELL</type><priority>MAJOR</priority><name>The elements must not have underscores in the name</name><templateKey>XPathCheck</templateKey><description>Remove the _ and adjust the name to be understandable. Remember Sync Terms!</description><parameters><parameter><key>filePattern</key><value>**/AD_ELEMENT.xml</value></parameter><parameter><key>expression</key><value>//AD_ELEMENT[contains(NAME, '_')]</value></parameter><parameter><key>message</key><value>Remove the _ and adjust the name to be understandable. Remember Sync Terms!</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Translations_Having_the_Same_Value_as_the_Original_Could_be_Incorrect</key><type>CODE_SMELL</type><priority>INFO</priority><name>Translations Having the Same Value as the Original Could be Incorrect</name><templateKey>XPathCheck</templateKey><description>This rule identifies rows (``&lt;row>``) marked as translated (``trl='Y'``) and containing at least one ``&lt;value>`` element where both values, the text and the original, match after normalization of spaces.</description><parameters><parameter><key>expression</key><value>//row[value[@isTrl='Y' and normalize-space(text()) = normalize-space(@original)]]</value></parameter><parameter><key>filePattern</key><value>**/referencedata/translation/**/*TRL*.xml</value></parameter><parameter><key>message</key><value>Check if this translation being the same as the original is OK</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Translations_Must_Have_trl_Y</key><type>CODE_SMELL</type><priority>CRITICAL</priority><name>Translations Must Have Their "trl" flag marked as 'Y'</name><templateKey>XPathCheck</templateKey><description>This rule selects all rows (``&lt;row>``) marked as not translated (``trl='N'``).</description><parameters><parameter><key>filePattern</key><value>**/referencedata/translation/**/*TRL*.xml</value></parameter><parameter><key>expression</key><value>//row[@trl="N"]</value></parameter><parameter><key>message</key><value>Mark this row's translation flag as 'Y'</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Translations_for_Rows_Must_not_Have_Inconsistent_or_Non_Translated_Values</key><type>CODE_SMELL</type><priority>CRITICAL</priority><name>Translations for Rows Must not Have Inconsistent or Non-Translated Values</name><templateKey>XPathCheck</templateKey><description>Detects translated rows (``trl='Y'``) with inconsistent or non-translated values. This can be one of the following:
+&lt;?xml version="1.0"?&gt;
+  &lt;database name="MODIFIED TABLE M_PRODUCT"&gt;
+    &lt;table name="M_PRODUCT" primaryKey="M_PRODUCT_PK"&gt;
+      &lt;column name="EXAMPLE" primaryKey="false" required="true" type="VARCHAR" size="50" autoIncrement="false"&gt;
+        &lt;default&gt;&lt;![CDATA['This is an example']]&gt;&lt;/default&gt;
+        &lt;onCreateDefault&gt;&lt;![CDATA['This is an example']]&gt;&lt;/onCreateDefault&gt;
+      &lt;/column&gt;
+    &lt;/table&gt;
+  &lt;/database&gt;
+``</description><cleanCodeAttribute>CONVENTIONAL</cleanCodeAttribute><parameters><parameter><key>filePattern</key><value>**/modifiedTables/*.xml</value></parameter><parameter><key>expression</key><value>//column[@required='true' and ((not(onCreateDefault/text()) or normalize-space(onCreateDefault) = '') or (not(default/text()) or normalize-space(default) = ''))]</value></parameter><parameter><key>message</key><value>Add a default value and/or onCreateDefault value to this required column</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S1134</key><type>CODE_SMELL</type><priority>MAJOR</priority><impacts><impact><softwareQuality>MAINTAINABILITY</softwareQuality><severity>MEDIUM</severity></impact></impacts><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S1135</key><type>CODE_SMELL</type><priority>INFO</priority><impacts><impact><softwareQuality>MAINTAINABILITY</softwareQuality><severity>LOW</severity></impact></impacts><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S125</key><type>CODE_SMELL</type><priority>MAJOR</priority><impacts><impact><softwareQuality>MAINTAINABILITY</softwareQuality><severity>MEDIUM</severity></impact></impacts><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S1778</key><type>BUG</type><priority>CRITICAL</priority><impacts><impact><softwareQuality>RELIABILITY</softwareQuality><severity>HIGH</severity></impact></impacts><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S2068</key><type>SECURITY_HOTSPOT</type><priority>BLOCKER</priority><parameters><parameter><key>credentialWords</key><value>password,passwd,pwd,passphrase</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S2647</key><type>VULNERABILITY</type><priority>CRITICAL</priority><impacts><impact><softwareQuality>SECURITY</softwareQuality><severity>HIGH</severity></impact></impacts><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S3281</key><type>VULNERABILITY</type><priority>BLOCKER</priority><impacts><impact><softwareQuality>MAINTAINABILITY</softwareQuality><severity>BLOCKER</severity></impact><impact><softwareQuality>SECURITY</softwareQuality><severity>BLOCKER</severity></impact></impacts><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S3330</key><type>SECURITY_HOTSPOT</type><priority>MINOR</priority><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S3355</key><type>VULNERABILITY</type><priority>CRITICAL</priority><impacts><impact><softwareQuality>MAINTAINABILITY</softwareQuality><severity>HIGH</severity></impact><impact><softwareQuality>SECURITY</softwareQuality><severity>HIGH</severity></impact></impacts><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S3374</key><type>VULNERABILITY</type><priority>BLOCKER</priority><impacts><impact><softwareQuality>SECURITY</softwareQuality><severity>BLOCKER</severity></impact></impacts><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S3421</key><type>CODE_SMELL</type><priority>MINOR</priority><impacts><impact><softwareQuality>MAINTAINABILITY</softwareQuality><severity>LOW</severity></impact></impacts><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S3422</key><type>BUG</type><priority>CRITICAL</priority><impacts><impact><softwareQuality>RELIABILITY</softwareQuality><severity>HIGH</severity></impact></impacts><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S3438</key><type>BUG</type><priority>MAJOR</priority><impacts><impact><softwareQuality>RELIABILITY</softwareQuality><severity>MEDIUM</severity></impact></impacts><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S3439</key><type>BUG</type><priority>MAJOR</priority><impacts><impact><softwareQuality>RELIABILITY</softwareQuality><severity>MEDIUM</severity></impact></impacts><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S3822</key><type>BUG</type><priority>CRITICAL</priority><impacts><impact><softwareQuality>RELIABILITY</softwareQuality><severity>HIGH</severity></impact></impacts><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S4507</key><type>SECURITY_HOTSPOT</type><priority>MINOR</priority><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S5122</key><type>SECURITY_HOTSPOT</type><priority>MINOR</priority><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S5322</key><type>SECURITY_HOTSPOT</type><priority>CRITICAL</priority><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S5332</key><type>SECURITY_HOTSPOT</type><priority>CRITICAL</priority><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S5594</key><type>VULNERABILITY</type><priority>MAJOR</priority><impacts><impact><softwareQuality>SECURITY</softwareQuality><severity>MEDIUM</severity></impact></impacts><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S5604</key><type>SECURITY_HOTSPOT</type><priority>MAJOR</priority><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S6358</key><type>SECURITY_HOTSPOT</type><priority>MAJOR</priority><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S6359</key><type>VULNERABILITY</type><priority>MINOR</priority><impacts><impact><softwareQuality>SECURITY</softwareQuality><severity>LOW</severity></impact></impacts><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>S6361</key><type>SECURITY_HOTSPOT</type><priority>MAJOR</priority><parameters></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Tab_must_not_have_Header_as_name</key><type>CODE_SMELL</type><priority>MINOR</priority><name>Tab must not have Header as name</name><templateKey>XPathCheck</templateKey><description>The Header of a window should be called "WINDOW_NAME Header". This is to make the Tab more recognizable in the selectors it appears. 
+For example, if the window is called "Product Operations", the tab header should be called "Product Operations Header".</description><cleanCodeAttribute>CONVENTIONAL</cleanCodeAttribute><parameters><parameter><key>filePattern</key><value>**/AD_TAB.xml</value></parameter><parameter><key>expression</key><value>//*[normalize-space(translate(NAME, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')) = 'header']</value></parameter><parameter><key>message</key><value>Tabs name must not be "Header".</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Text_of_the_messages_must_be_end_with__</key><type>CODE_SMELL</type><priority>MAJOR</priority><name>Text of the messages must be end with . or ! or ?</name><templateKey>XPathCheck</templateKey><description>The messages must be ended by a "." or "!" or "?". The only type of message that can be ended without a sign is the "Menu" message type.</description><cleanCodeAttribute>CONVENTIONAL</cleanCodeAttribute><parameters><parameter><key>filePattern</key><value>**/AD_MESSAGE.xml</value></parameter><parameter><key>expression</key><value>//AD_MESSAGE[MSGTYPE != "M" and string-length(MSGTEXT) &gt; 15 and substring(MSGTEXT, string-length(MSGTEXT), 1) != "." and substring(MSGTEXT, string-length(MSGTEXT), 1) != "?" and substring(MSGTEXT, string-length(MSGTEXT), 1) != "!"]</value></parameter><parameter><key>message</key><value>The messages must be ended by a .</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>The_elements_must_not_have_underscores_in_the_name</key><type>CODE_SMELL</type><priority>MAJOR</priority><name>The elements must not have underscores in the name</name><templateKey>XPathCheck</templateKey><description>Remove the _ and adjust the name to be understandable. Remember Sync Terms!</description><cleanCodeAttribute>CONVENTIONAL</cleanCodeAttribute><parameters><parameter><key>filePattern</key><value>**/AD_ELEMENT.xml</value></parameter><parameter><key>expression</key><value>//AD_ELEMENT[contains(NAME, '_')]</value></parameter><parameter><key>message</key><value>Remove the _ and adjust the name to be understandable. Remember Sync Terms!</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Translations_Having_the_Same_Value_as_the_Original_Could_be_Incorrect</key><type>CODE_SMELL</type><priority>INFO</priority><name>Translations Having the Same Value as the Original Could be Incorrect</name><templateKey>XPathCheck</templateKey><description>This rule identifies rows (``&lt;row&gt;``) marked as translated (``trl='Y'``) and containing at least one ``&lt;value&gt;`` element where both values, the text and the original, match after normalization of spaces.</description><cleanCodeAttribute>CONVENTIONAL</cleanCodeAttribute><parameters><parameter><key>expression</key><value>//row[value[@isTrl='Y' and normalize-space(text()) = normalize-space(@original)]]</value></parameter><parameter><key>filePattern</key><value>**/referencedata/translation/**/*TRL*.xml</value></parameter><parameter><key>message</key><value>Check if this translation being the same as the original is OK</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Translations_Must_Have_trl_Y</key><type>CODE_SMELL</type><priority>CRITICAL</priority><name>Translations Must Have Their "trl" flag marked as 'Y'</name><templateKey>XPathCheck</templateKey><description>This rule selects all rows (``&lt;row&gt;``) marked as not translated (``trl='N'``).</description><cleanCodeAttribute>CONVENTIONAL</cleanCodeAttribute><parameters><parameter><key>filePattern</key><value>**/referencedata/translation/**/*TRL*.xml</value></parameter><parameter><key>expression</key><value>//row[@trl="N"]</value></parameter><parameter><key>message</key><value>Mark this row's translation flag as 'Y'</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Translations_for_Rows_Must_not_Have_Inconsistent_or_Non_Translated_Values</key><type>CODE_SMELL</type><priority>CRITICAL</priority><name>Translations for Rows Must not Have Inconsistent or Non-Translated Values</name><templateKey>XPathCheck</templateKey><description>Detects translated rows (``trl='Y'``) with inconsistent or non-translated values. This can be one of the following:
 
 - Value has ``isTrl='N'`` and its text is different from the ``original`` attribute.
 - Value text is not empty and ``isTrl`` is ``'N'``.
-- The ``original`` attribute is an empty text and either the value text is not empty or ``isTrl = 'Y'``.</description><parameters><parameter><key>filePattern</key><value>**/referencedata/translation/**/*TRL*.xml</value></parameter><parameter><key>expression</key><value>//row[
+- The ``original`` attribute is an empty text and either the value text is not empty or ``isTrl = 'Y'``.</description><cleanCodeAttribute>CONVENTIONAL</cleanCodeAttribute><parameters><parameter><key>filePattern</key><value>**/referencedata/translation/**/*TRL*.xml</value></parameter><parameter><key>expression</key><value>//row[
     .//value[@isTrl='N' and text() != @original] or 
     .//value[text() != '' and @isTrl = 'N'] or 
     .//value[@original = '' and (text() != '' or @isTrl = 'Y')] 
-]</value></parameter><parameter><key>message</key><value>Some values for this row are incorrectly left as not translated, or translated when there's nothing to translate</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Windows_must_have_a_description__that_starts_with_upper_and_finish_with__</key><type>CODE_SMELL</type><priority>MINOR</priority><name>Windows must have a description, that starts with upper and finish with .</name><templateKey>XPathCheck</templateKey><description>Windows must have a description, that starts with upper and finish with .</description><parameters><parameter><key>filePattern</key><value>**/AD_WINDOW.xml</value></parameter><parameter><key>expression</key><value>//DESCRIPTION[not(matches(text(), '^[A-Z].*\.$'))]</value></parameter><parameter><key>message</key><value>Windows must have a description, that starts with upper and finish with .</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>YNColumnsMustHaveCheckConstraint</key><type>BUG</type><priority>MAJOR</priority><name>Check columns should have a check constraint to validate their values</name><templateKey>XPathCheck</templateKey><description>Any required field of size 1 with default in 'Y' or 'N', must have a check constraint that validates any possible values. 
+]</value></parameter><parameter><key>message</key><value>Some values for this row are incorrectly left as not translated, or translated when there's nothing to translate</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>Windows_must_have_a_description__that_starts_with_upper_and_finish_with__</key><type>CODE_SMELL</type><priority>MINOR</priority><name>Windows must have a description, that starts with upper and finish with .</name><templateKey>XPathCheck</templateKey><description>Windows must have a description, that starts with upper and finish with .</description><cleanCodeAttribute>CONVENTIONAL</cleanCodeAttribute><parameters><parameter><key>filePattern</key><value>**/AD_WINDOW.xml</value></parameter><parameter><key>expression</key><value>//DESCRIPTION[not(matches(text(), '^[A-Z].*\.$'))]</value></parameter><parameter><key>message</key><value>Windows must have a description, that starts with upper and finish with .</value></parameter></parameters></rule><rule><repositoryKey>xml</repositoryKey><key>YNColumnsMustHaveCheckConstraint</key><type>BUG</type><priority>MAJOR</priority><name>Check columns should have a check constraint to validate their values</name><templateKey>XPathCheck</templateKey><description>Any required field of size 1 with default in 'Y' or 'N', must have a check constraint that validates any possible values. 
 
 == Compliant code example: 
 ``
-&lt;column name="ISACTIVE" primaryKey="false" required="true" type="CHAR" size="1" autoIncrement="false">
-  &lt;default>&lt;![CDATA[Y]]&gt;&lt;/default>
-  &lt;onCreateDefault/>
-&lt;/column>
+&lt;column name="ISACTIVE" primaryKey="false" required="true" type="CHAR" size="1" autoIncrement="false"&gt;
+  &lt;default&gt;&lt;![CDATA[Y]]&gt;&lt;/default&gt;
+  &lt;onCreateDefault/&gt;
+&lt;/column&gt;
 ...
-&lt;check name="M_PRODUCT_ISACTIVE_CHECK">&lt;![CDATA[ISACTIVE IN ('Y', 'N')]]&gt;&lt;/check>
-``</description><parameters><parameter><key>expression</key><value>//column[
+&lt;check name="M_PRODUCT_ISACTIVE_CHECK"&gt;&lt;![CDATA[ISACTIVE IN ('Y', 'N')]]&gt;&lt;/check&gt;
+``</description><cleanCodeAttribute>CONVENTIONAL</cleanCodeAttribute><parameters><parameter><key>expression</key><value>//column[
   @required='true' and 
   @size='1' and 
   @type='CHAR' and 
